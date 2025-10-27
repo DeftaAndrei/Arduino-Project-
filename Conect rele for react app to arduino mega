@@ -1,0 +1,37 @@
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+#include <WiFiManager.h> // Pentru configurare WiFi avansată
+
+// Configurație WiFi (fallback - se poate configura prin WiFiManager)
+const char* fallback_ssid = "YOUR_WIFI_SSID";
+const char* fallback_password = "YOUR_WIFI_PASSWORD";
+// Configurație MQTT
+const char* mqtt_server = "192.***.*.****"; // IP serverului MQTT
+const int mqtt_port = 1883; // we can make another
+const char* mqtt_user = ""; // Username MQTT (opțional)
+const char* mqtt_password = ""; // Password MQTT (opțional)
+// Topics MQTT - Arhitectură profesională
+const char* topic_command = "greenhouse/relay/command";
+const char* topic_status = "greenhouse/relay/status";
+const char* topic_heartbeat = "greenhouse/esp32/heartbeat";
+const char* topic_mega_status = "greenhouse/mega/status";
+const char* topic_system_log = "greenhouse/system/log";
+// Configurații avansate
+const char* device_id = "ESP32_BRIDGE_PRO_001";
+const char* firmware_version = "2.0.0";
+const int max_reconnect_attempts = 5;
+// Vectorul cu pinii de la 24 la 39 (relee 1-16) - Arduino Mega
+int relee[] = {
+24, 25, 26, 27, 28, 29, 30, 31,
+98
+32, 33, 34, 35, 36, 37, 38, 39
+};
+// Starea curentă a fiecărui releu (0 = oprit, 1 = pornit)
+bool stareReleu[16] = {false};
+// Configurația fiecărui releu cu nume descriptive
+struct RelayConfig {
+String name;
+String type;
+bool enabled;
+};
