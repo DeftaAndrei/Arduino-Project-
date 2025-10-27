@@ -2,8 +2,8 @@
 #define ESP Serial1      // TX1/RX1 -> ESP (pinii 18/19)
 #define DBG Serial       // USB -> Serial Monitor
 
-const char* SSID = "Orange-b39kTz-2G";
-const char* PASS = "K22ZyGy994x9AC6FUN";
+const char* SSID = "Your Wi-fi name ";
+const char* PASS = "Your  password ";
 
 const long BAUDS[] = {115200, 57600, 38400, 19200, 9600};
 
