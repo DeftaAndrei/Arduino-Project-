@@ -2,8 +2,8 @@
 #define ESP     Serial1
 #define ESP_BAUD 115200
 
-const char* SSID = "Orange-b39kTz-2G";
-const char* PASS = "K22ZyGy994x9AC6FUN";
+const char* SSID = "";
+const char* PASS = "";
 
 String readESP(uint32_t tout = 3000) {
   uint32_t t = millis(); String r;
